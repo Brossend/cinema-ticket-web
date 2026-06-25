@@ -1,0 +1,1 @@
+export { ScreeningsPage as default } from '@/views/screenings';

@@ -1,0 +1,21 @@
+@use './reset';
+@use './variables';
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  min-width: 320px;
+}
+
+body {
+  background: var(--color-page-background);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-base), serif;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

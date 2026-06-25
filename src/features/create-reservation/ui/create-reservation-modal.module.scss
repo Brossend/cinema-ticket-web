@@ -1,0 +1,33 @@
+.create-reservation-modal {
+  display: grid;
+  gap: 20px;
+
+  &__screening {
+    padding: 16px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface-muted);
+  }
+
+  &__datetime {
+    margin-bottom: 6px;
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  &__title {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  &__notice {
+    padding: 12px 14px;
+    border-radius: var(--radius-md);
+    background: var(--color-surface-muted);
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}

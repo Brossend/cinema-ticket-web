@@ -1,0 +1,1 @@
+export { ScreeningsPage } from './ui/screenings-page';

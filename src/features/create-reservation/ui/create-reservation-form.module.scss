@@ -1,0 +1,9 @@
+.create-reservation-form {
+  display: grid;
+  gap: 24px;
+
+  &__fields {
+    display: grid;
+    gap: 16px;
+  }
+}
