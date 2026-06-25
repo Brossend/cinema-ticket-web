@@ -3,6 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
+import { isApiError } from '@/shared/api';
 import { Button } from '@/shared/ui/button';
 import { Input } from '@/shared/ui/input';
 
@@ -16,19 +17,21 @@ import styles from './create-reservation-form.module.scss';
 interface ICreateReservationFormProps {
     onSubmit: (
         values: TReservationFormValues,
-    ) => Promise<void> | void;
+    ) => Promise<void>;
 }
 
 export function CreateReservationForm({
                                           onSubmit,
                                       }: ICreateReservationFormProps) {
     const {
-        register,
-        handleSubmit,
+        clearErrors,
         formState: {
             errors,
             isSubmitting,
         },
+        handleSubmit,
+        register,
+        setError,
     } = useForm<TReservationFormValues>({
         defaultValues: {
             name: '',
@@ -41,7 +44,48 @@ export function CreateReservationForm({
     async function handleFormSubmit(
         values: TReservationFormValues,
     ) {
-        await onSubmit(values);
+        clearErrors();
+
+        try {
+            await onSubmit(values);
+        } catch (error) {
+            if (isApiError(error)) {
+                const nameError =
+                    error.validationErrors?.name?.[0];
+
+                const emailError =
+                    error.validationErrors?.email?.[0];
+
+                if (nameError) {
+                    setError('name', {
+                        message: nameError,
+                        type: 'server',
+                    });
+                }
+
+                if (emailError) {
+                    setError('email', {
+                        message: emailError,
+                        type: 'server',
+                    });
+                }
+
+                if (!nameError && !emailError) {
+                    setError('root', {
+                        message: error.message,
+                        type: 'server',
+                    });
+                }
+
+                return;
+            }
+
+            setError('root', {
+                message:
+                    'Не удалось выполнить оплату. Повторите попытку.',
+                type: 'server',
+            });
+        }
     }
 
     return (
@@ -76,13 +120,24 @@ export function CreateReservationForm({
                 />
             </div>
 
+            {errors.root?.message && (
+                <p
+                    className={
+                        styles['create-reservation-form__error']
+                    }
+                    role="alert"
+                >
+                    {errors.root.message}
+                </p>
+            )}
+
             <Button
-                isFullWidth
                 disabled={isSubmitting}
+                isFullWidth
                 size="large"
                 type="submit"
             >
-                {isSubmitting ? 'Обрабатываем...' : 'Оплатить'}
+                {isSubmitting ? 'Оплата...' : 'Оплатить'}
             </Button>
         </form>
     );

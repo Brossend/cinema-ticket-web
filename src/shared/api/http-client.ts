@@ -102,15 +102,25 @@ export const httpClient = {
         });
     },
 
-    post<TResponse, TBody>(
+    post<TResponse, TBody = undefined>(
         path: string,
-        body: TBody,
+        body?: TBody,
         options?: Omit<IHttpRequestOptions, 'body' | 'method'>,
     ): Promise<TResponse> {
         return request<TResponse>(path, {
             ...options,
             body,
             method: 'POST',
+        });
+    },
+
+    delete<TResponse>(
+        path: string,
+        options?: Omit<IHttpRequestOptions, 'body' | 'method'>,
+    ): Promise<TResponse> {
+        return request<TResponse>(path, {
+            ...options,
+            method: 'DELETE',
         });
     },
 };

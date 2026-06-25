@@ -14,13 +14,15 @@ import styles from './modal.module.scss';
 
 interface IModalProps {
     children: ReactNode;
+    isCloseDisabled?: boolean;
     isOpen: boolean;
     title: string;
-    onClose: () => void;
+    onClose: () => void | Promise<void>;
 }
 
 export function Modal({
                           children,
+                          isCloseDisabled = false,
                           isOpen,
                           title,
                           onClose,
@@ -48,11 +50,19 @@ export function Modal({
         }
     }, [isOpen]);
 
+    function requestClose() {
+        if (isCloseDisabled) {
+            return;
+        }
+
+        void onClose();
+    }
+
     function handleCancel(
         event: SyntheticEvent<HTMLDialogElement>,
     ) {
         event.preventDefault();
-        onClose();
+        requestClose();
     }
 
     return (
@@ -74,7 +84,8 @@ export function Modal({
                     <button
                         aria-label="Закрыть модальное окно"
                         className={styles['modal__close']}
-                        onClick={onClose}
+                        disabled={isCloseDisabled}
+                        onClick={requestClose}
                         type="button"
                     >
                         <span aria-hidden="true">×</span>

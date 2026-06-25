@@ -1,7 +1,5 @@
 import { ScreeningsList } from '@/widgets/screenings-list';
 
-import { screeningFixtures } from '../model/screening-fixtures';
-
 import styles from './screenings-page.module.scss';
 
 export function ScreeningsPage() {
@@ -22,7 +20,7 @@ export function ScreeningsPage() {
                     </p>
                 </div>
 
-                <ScreeningsList screenings={screeningFixtures} />
+                <ScreeningsList />
             </section>
         </main>
     );
