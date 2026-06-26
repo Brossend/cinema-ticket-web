@@ -1,10 +1,10 @@
 export {
     CreateReservationButton,
-} from './ui/create-reservation-button';
+} from './ui/create-reservation-button/create-reservation-button';
 
 export {
     CreateReservationModal,
-} from './ui/create-reservation-modal';
+} from './ui/create-reservation-modal/create-reservation-modal';
 
 export {
     useCancelReservationMutation,

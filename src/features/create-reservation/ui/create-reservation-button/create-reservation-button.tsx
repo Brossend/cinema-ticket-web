@@ -1,14 +1,9 @@
 'use client';
 
-import type { IScreening } from '@/entities/screening';
 import { Button } from '@/shared/ui/button';
-
-interface ICreateReservationButtonProps {
-    isCreating: boolean;
-    isDisabled: boolean;
-    screening: IScreening;
-    onStartReservation: (screening: IScreening) => void;
-}
+import {
+    ICreateReservationButtonProps
+} from "@/features/create-reservation/ui/create-reservation-button/create-reservation-button.types";
 
 export function CreateReservationButton({
                                             isCreating,

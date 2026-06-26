@@ -7,25 +7,13 @@ import { Button } from '@/shared/ui/button';
 import { Modal } from '@/shared/ui/modal';
 
 import type { TReservationFormValues } from '@/features/create-reservation';
-import { CreateReservationForm } from './create-reservation-form';
-import { ReservationCountdown } from './reservation-countdown';
+import { CreateReservationForm } from '../create-reservation-form/create-reservation-form';
+import { ReservationCountdown } from '../reservation-countdown/reservation-countdown';
 
 import styles from './create-reservation-modal.module.scss';
-
-interface ICreateReservationModalProps {
-    activeReservation: IActiveReservation | null;
-    cancelErrorMessage?: string;
-    isCloseDisabled: boolean;
-    isExpired: boolean;
-    isOpen: boolean;
-    isPaid: boolean;
-    screening: IScreening | null;
-    onClose: () => void | Promise<void>;
-    onExpire: () => void;
-    onSubmit: (
-        values: TReservationFormValues,
-    ) => Promise<void>;
-}
+import {
+    ICreateReservationModalProps
+} from "@/features/create-reservation/ui/create-reservation-modal/create-reservation-modal.types";
 
 export function CreateReservationModal({
                                            activeReservation,

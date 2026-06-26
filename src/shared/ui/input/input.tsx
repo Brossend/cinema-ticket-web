@@ -3,16 +3,10 @@
 import {
     forwardRef,
     useId,
-    type InputHTMLAttributes,
 } from 'react';
 
 import styles from './input.module.scss';
-
-export interface IInputProps
-    extends InputHTMLAttributes<HTMLInputElement> {
-    label: string;
-    errorMessage?: string;
-}
+import {IInputProps} from "@/shared/ui/input/input.types";
 
 export const Input = forwardRef<HTMLInputElement, IInputProps>(
     function Input(

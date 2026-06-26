@@ -1,14 +1,7 @@
-import type { ReactNode } from 'react';
-
-import { formatScreeningDate } from '../lib/format-screening-date';
-import type { IScreening } from '../model/types';
+import { formatScreeningDate } from '@/entities/screening';
 
 import styles from './screening-card.module.scss';
-
-interface IScreeningCardProps {
-    screening: IScreening;
-    actions?: ReactNode;
-}
+import {IScreeningCardProps} from "@/entities/screening/ui/screening-card.types";
 
 export function ScreeningCard({
                                   screening,

@@ -1,16 +1,5 @@
-import type { ButtonHTMLAttributes } from 'react';
-
 import styles from './button.module.scss';
-
-export type TButtonVariant = 'primary' | 'secondary';
-export type TButtonSize = 'medium' | 'large';
-
-export interface IButtonProps
-    extends ButtonHTMLAttributes<HTMLButtonElement> {
-    variant?: TButtonVariant;
-    size?: TButtonSize;
-    isFullWidth?: boolean;
-}
+import {IButtonProps} from "@/shared/ui/button/button.types";
 
 export function Button({
                            className,

@@ -1,7 +1,6 @@
 'use client';
 
 import type {
-    ReactNode,
     SyntheticEvent,
 } from 'react';
 import {
@@ -11,14 +10,7 @@ import {
 } from 'react';
 
 import styles from './modal.module.scss';
-
-interface IModalProps {
-    children: ReactNode;
-    isCloseDisabled?: boolean;
-    isOpen: boolean;
-    title: string;
-    onClose: () => void | Promise<void>;
-}
+import {IModalProps} from "@/shared/ui/modal/modal.types";
 
 export function Modal({
                           children,

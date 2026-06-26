@@ -5,14 +5,12 @@ import {
     useRef,
 } from 'react';
 
-import { useReservationCountdown } from '../model/use-reservation-countdown';
+import { useReservationCountdown } from '../../model/use-reservation-countdown';
 
 import styles from './reservation-countdown.module.scss';
-
-interface IReservationCountdownProps {
-    expiresAt: string;
-    onExpire: () => void;
-}
+import {
+    IReservationCountdownProps
+} from "@/features/create-reservation/ui/reservation-countdown/reservation-countdown.types";
 
 function formatRemainingTime(remainingSeconds: number): string {
     const minutes = Math.floor(remainingSeconds / 60);

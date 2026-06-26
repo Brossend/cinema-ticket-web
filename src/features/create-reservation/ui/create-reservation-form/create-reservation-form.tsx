@@ -10,15 +10,12 @@ import { Input } from '@/shared/ui/input';
 import {
     reservationFormSchema,
     type TReservationFormValues,
-} from '../model/reservation-form.schema';
+} from '../../model/reservation-form.schema';
 
 import styles from './create-reservation-form.module.scss';
-
-interface ICreateReservationFormProps {
-    onSubmit: (
-        values: TReservationFormValues,
-    ) => Promise<void>;
-}
+import {
+    ICreateReservationFormProps
+} from "@/features/create-reservation/ui/create-reservation-form/create-reservation-form.types";
 
 export function CreateReservationForm({
                                           onSubmit,
